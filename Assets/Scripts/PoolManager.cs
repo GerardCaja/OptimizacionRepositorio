@@ -10,10 +10,10 @@ public class PoolManager : MonoBehaviour
     [System.Serializable]
     public class Pool
     {
-        [SerializeField] string parentName;
-        [SerializeField] GameObject prefab;
-        [SerializeField] int poolSize;
-        [SerializeField] List<GameObject> pooledObjects;
+        public string parentName;
+        public GameObject prefab;
+        public int poolSize;
+        public List<GameObject> pooledObjects;
     }
 
     [SerializeField] List<Pool> pools;
@@ -39,28 +39,28 @@ public class PoolManager : MonoBehaviour
 
         foreach (Pool pool in pools)
         {
-            GameObject parent = new GameObject(parentName);
+            GameObject parent = new GameObject(pool.parentName);
 
-            for (int i = 0; i < poolSize; i++)
+            for (int i = 0; i < pool.poolSize; i++)
             {
-                obj = Instantiate(prefab);
+                obj = Instantiate(pool.prefab);
                 obj.transform.SetParent(parent.transform);
                 obj.SetActive(false);
-                pooledObjects.Add(obj);
+                pool.pooledObjects.Add(obj);
             }
         }
 
         
     }
 
-    public GameObject GetPooledObjects(Vector3 position, Quaternion rotation)
+    public GameObject GetPooledObjects(int selectedPool, Vector3 position, Quaternion rotation)
     {
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < pools[selectedPool].poolSize; i++)
         {
-            if(!pooledObjects[i].activeInHierarchy)
+            if(!pools[selectedPool].pooledObjects[i].activeInHierarchy)
             {
                 GameObject objectToSpawn;
-                objectToSpawn = pooledObjects[i];
+                objectToSpawn = pools[selectedPool].pooledObjects[i];
                 objectToSpawn.transform.position = position;
                 objectToSpawn.transform.rotation = rotation;
                 return objectToSpawn;
