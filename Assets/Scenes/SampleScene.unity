@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7cbec1e2f9d084947b7a04f3b5950fc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -443,10 +443,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29841d207d34e0849871eed656457601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentName: BulletPool
-  prefab: {fileID: 1426209031143511171, guid: 3afb5185bc776e342887eea5b26820b4, type: 3}
-  poolSize: 30
-  pooledObjects: []
+  pools:
+  - parentName: BulletPool
+    prefab: {fileID: 1426209031143511171, guid: 3afb5185bc776e342887eea5b26820b4, type: 3}
+    poolSize: 0
+    pooledObjects: []
+  - parentName: GranadaParent
+    prefab: {fileID: 1426209031143511171, guid: afc76c6f150b6dc4eb069ab967dadbeb, type: 3}
+    poolSize: 0
+    pooledObjects: []
 --- !u!4 &1217922601
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +650,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f2db350dad8d0ba4fa8e75ec17be6b4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

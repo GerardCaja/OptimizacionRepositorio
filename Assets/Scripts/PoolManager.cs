@@ -7,10 +7,17 @@ public class PoolManager : MonoBehaviour
 
     public static PoolManager Instance;
 
-    [SerializeField] string parentName;
-    [SerializeField] GameObject prefab;
-    [SerializeField] int poolSize;
-    [SerializeField] List<GameObject> pooledObjects;
+    [System.Serializable]
+    public class Pool
+    {
+        [SerializeField] string parentName;
+        [SerializeField] GameObject prefab;
+        [SerializeField] int poolSize;
+        [SerializeField] List<GameObject> pooledObjects;
+    }
+
+    [SerializeField] List<Pool> pools;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,17 +33,24 @@ public class PoolManager : MonoBehaviour
 
     void Start()
     {
-        GameObject parent = new GameObject(parentName);
+        
 
         GameObject obj;
 
-        for (int i = 0; i < poolSize; i++)
+        foreach (Pool pool in pools)
         {
-            obj = Instantiate(prefab);
-            obj.transform.SetParent(parent.transform);
-            obj.SetActive(false);
-            pooledObjects.Add(obj);
+            GameObject parent = new GameObject(parentName);
+
+            for (int i = 0; i < poolSize; i++)
+            {
+                obj = Instantiate(prefab);
+                obj.transform.SetParent(parent.transform);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
         }
+
+        
     }
 
     public GameObject GetPooledObjects(Vector3 position, Quaternion rotation)
