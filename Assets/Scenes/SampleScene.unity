@@ -446,11 +446,11 @@ MonoBehaviour:
   pools:
   - parentName: BulletPool
     prefab: {fileID: 1426209031143511171, guid: 3afb5185bc776e342887eea5b26820b4, type: 3}
-    poolSize: 0
+    poolSize: 10
     pooledObjects: []
   - parentName: GranadaParent
     prefab: {fileID: 1426209031143511171, guid: afc76c6f150b6dc4eb069ab967dadbeb, type: 3}
-    poolSize: 0
+    poolSize: 10
     pooledObjects: []
 --- !u!4 &1217922601
 Transform:
@@ -500,6 +500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPosition: {fileID: 2058462880}
+  bulletType: 0
+  bulletType1: 1
 --- !u!136 &1783507022
 CapsuleCollider:
   m_ObjectHideFlags: 0
