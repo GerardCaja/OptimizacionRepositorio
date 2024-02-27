@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] Transform gunPosition;
 
+    public float playerSpeed = 450f;
+
     [SerializeField] int bulletType = 0;
-    [SerializeField] int bulletType1 = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float hor = Input.GetAxisRaw("Horizontal");
+
+        transform.position += new Vector3(playerSpeed * hor * Time.deltaTime,0,0);
+
+
+
         if(Input.GetButtonDown("Fire1"))
         {
             GameObject bullet = PoolManager.Instance.GetPooledObjects(bulletType, gunPosition.position, gunPosition.rotation);
@@ -30,21 +37,6 @@ public class Player : MonoBehaviour
             {
                 Debug.LogError("Pool de bullet demasiado pequeño");
             }
-        }
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject bullet1 = PoolManager.Instance.GetPooledObjects(bulletType1, gunPosition.position, gunPosition.rotation);
-            
-            if(bullet1 != null)
-            {
-                bullet1.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("Pool de bullet1 demasiado pequeño");
-            }
-        }
-        
+        }        
     }
 }

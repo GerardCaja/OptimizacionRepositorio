@@ -41,6 +41,7 @@ public class PoolManager : MonoBehaviour
         {
             GameObject parent = new GameObject(pool.parentName);
 
+
             for (int i = 0; i < pool.poolSize; i++)
             {
                 obj = Instantiate(pool.prefab);

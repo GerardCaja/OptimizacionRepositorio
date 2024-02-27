@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
-    [SerializeField] float bulletSpeed = 5;
+    [SerializeField] float enemySpeed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        transform.position += transform.forward * enemySpeed * Time.deltaTime;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -23,3 +23,4 @@ public class Bullet : MonoBehaviour
         gameObject.SetActive(false);
     }
 }
+
