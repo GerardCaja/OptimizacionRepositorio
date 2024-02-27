@@ -23,8 +23,6 @@ public class Player : MonoBehaviour
 
         transform.position += new Vector3(playerSpeed * hor * Time.deltaTime,0,0);
 
-
-
         if(Input.GetButtonDown("Fire1"))
         {
             GameObject bullet = PoolManager.Instance.GetPooledObjects(bulletType, gunPosition.position, gunPosition.rotation);
